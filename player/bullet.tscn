@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyneg1ql68ciy"]
+
+[ext_resource type="Texture2D" uid="uid://bjx5gh646uby1" path="res://Assets/PNG/Lasers/laserRed01.png" id="2_7yilr"]
+
+[sub_resource type="GDScript" id="GDScript_c0yhb"]
+script/source = "extends Area2D
+
+var speed = 10
+var damage = 1.0
+var velocity = Vector2.ZERO
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	velocity = Vector2(0,-speed).rotated(rotation)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(_delta):
+	position = position + velocity
+
+
+func _on_body_entered(_body):
+	queue_free()
+
+
+func _on_timer_timeout():
+	queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0r56"]
+radius = 12.0
+
+[node name="Bullet" type="Area2D"]
+script = SubResource("GDScript_c0yhb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7yilr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_k0r56")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

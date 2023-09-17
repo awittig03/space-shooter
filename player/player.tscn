@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba2mfij4jkis1"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_bh6wd"]
+[ext_resource type="Texture2D" uid="uid://dtw50mwk2kxqn" path="res://Assets/PNG/Effects/fire18.png" id="2_14arw"]
+[ext_resource type="Texture2D" uid="uid://cldxlv6ktgmm0" path="res://Assets/PNG/Effects/fire12.png" id="3_d8kgv"]
+[ext_resource type="Texture2D" uid="uid://bg1p0sgbqtnui" path="res://Assets/PNG/playerShip1_green.png" id="4_g41ov"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(535, 155)
+script = ExtResource("1_bh6wd")
+metadata/_edit_group_ = true
+
+[node name="Exhaust" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-23.8892, 68.2361)
+rotation = -3.14159
+scale = Vector2(1.69478, 2.11052)
+texture = ExtResource("2_14arw")
+offset = Vector2(3, 0)
+
+[node name="Exhaust2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-23.8892, 68.2361)
+rotation = -3.14159
+scale = Vector2(1.69478, 2.11052)
+texture = ExtResource("2_14arw")
+offset = Vector2(-30, 0)
+
+[node name="headlight" type="Sprite2D" parent="."]
+position = Vector2(78, -85)
+scale = Vector2(2.62191, 4.05526)
+texture = ExtResource("3_d8kgv")
+offset = Vector2(-30, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.11616, 1.44667)
+texture = ExtResource("4_g41ov")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.11616, 1.44667)
+polygon = PackedVector2Array(12.5, -34.9, 16.2, -14.5, 17.1, -14.5, 35.8, -2.7, 42.6, -10.5, 49.3, -10.5, 49.5, 24.7, 46.6, 29.5, 42.7, 29.5, 39.7, 26.5, 16.4, 31.2, 11.9, 37.5, -12.2, 37.5, -18.4, 30.5, -22.8, 30.5, -39.8, 25.5, -45.2, 29.8, -47.5, 28.8, -47.5, 27.3, -49.5, 25.3, -49.5, -9.5, -48.9, -9.5, -41.5, -10.9, -41.5, -8.4, -35.9, -3.5, -17.5, -12.8, -12.5, -34.9, -12.5, -37.5, 12.5, -37.5)
