@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba2mfij4jkis1"]
+[gd_scene load_steps=6 format=3 uid="uid://ba2mfij4jkis1"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_bh6wd"]
 [ext_resource type="Texture2D" uid="uid://dtw50mwk2kxqn" path="res://Assets/PNG/Effects/fire18.png" id="2_14arw"]
 [ext_resource type="Texture2D" uid="uid://cldxlv6ktgmm0" path="res://Assets/PNG/Effects/fire12.png" id="3_d8kgv"]
 [ext_resource type="Texture2D" uid="uid://bg1p0sgbqtnui" path="res://Assets/PNG/playerShip1_green.png" id="4_g41ov"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tyjxi"]
+radius = 65.0
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(535, 155)
 script = ExtResource("1_bh6wd")
 metadata/_edit_group_ = true
 
@@ -27,6 +29,7 @@ texture = ExtResource("2_14arw")
 offset = Vector2(-30, 0)
 
 [node name="headlight" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(78, -85)
 scale = Vector2(2.62191, 4.05526)
 texture = ExtResource("3_d8kgv")
@@ -37,5 +40,11 @@ scale = Vector2(1.11616, 1.44667)
 texture = ExtResource("4_g41ov")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(1.11616, 1.44667)
-polygon = PackedVector2Array(12.5, -34.9, 16.2, -14.5, 17.1, -14.5, 35.8, -2.7, 42.6, -10.5, 49.3, -10.5, 49.5, 24.7, 46.6, 29.5, 42.7, 29.5, 39.7, 26.5, 16.4, 31.2, 11.9, 37.5, -12.2, 37.5, -18.4, 30.5, -22.8, 30.5, -39.8, 25.5, -45.2, 29.8, -47.5, 28.8, -47.5, 27.3, -49.5, 25.3, -49.5, -9.5, -48.9, -9.5, -41.5, -10.9, -41.5, -8.4, -35.9, -3.5, -17.5, -12.8, -12.5, -34.9, -12.5, -37.5, 12.5, -37.5)
+polygon = PackedVector2Array(9, -54, -9, -54, -13, -18, -40, 2, -47, -2, -50, -10, -56, -9, -52, 34, -47, 35, -47, 29, -41, 33, -15, 39, -8, 54, 9, 54, 16, 39, 41, 33, 47, 28, 48, 35, 52, 35, 55, -8, 50, -10, 47, -1, 40, 2, 13, -17)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tyjxi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
