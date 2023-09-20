@@ -12,7 +12,12 @@ https://www.kenney.nl/assets/space-shooter-redux
 
 ## References
 
+https://www.dafont.com/hyperspace.font
+https://www.kenney.nl/assets/space-shooter-redux
+
 ## Future Development
+Add backgroud and add some music 
+
 
 ## Created by
 Alyssa Wittig
