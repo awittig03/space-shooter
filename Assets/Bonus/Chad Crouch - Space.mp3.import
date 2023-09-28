@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnw1gw71lnnx"
+path="res://.godot/imported/Chad Crouch - Space.mp3-c64d0ddf325931f96da92656bd42887b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Bonus/Chad Crouch - Space.mp3"
+dest_files=["res://.godot/imported/Chad Crouch - Space.mp3-c64d0ddf325931f96da92656bd42887b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

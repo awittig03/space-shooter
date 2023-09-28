@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bymestjd04any"]
+[gd_scene load_steps=10 format=3 uid="uid://bymestjd04any"]
 
+[ext_resource type="Texture2D" uid="uid://b16njcllrmlb5" path="res://Assets/Backgrounds/jpegPIA25258.jpg" id="1_yg102"]
 [ext_resource type="PackedScene" uid="uid://ba2mfij4jkis1" path="res://player/player.tscn" id="1_yupnn"]
 [ext_resource type="Script" path="res://player/Player_Container.gd" id="2_fq66f"]
 [ext_resource type="PackedScene" uid="uid://b6701dp0ce58o" path="res://asteroid.tscn" id="2_pyl5d"]
@@ -7,8 +8,14 @@
 [ext_resource type="Script" path="res://UI/HUD.gd" id="5_hbgfb"]
 [ext_resource type="FontFile" uid="uid://cqaeec5xbmmko" path="res://UI/Hyperspace Bold.otf" id="5_vub5q"]
 [ext_resource type="Script" path="res://UI/Menu.gd" id="7_p3y7u"]
+[ext_resource type="AudioStream" uid="uid://cnw1gw71lnnx" path="res://Assets/Bonus/Chad Crouch - Space.mp3" id="9_mdlc2"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(635.1, 812.005)
+scale = Vector2(1.66392, 1.63138)
+texture = ExtResource("1_yg102")
 
 [node name="asteroid_container" type="Node2D" parent="."]
 
@@ -17,6 +24,15 @@ position = Vector2(100, 100)
 
 [node name="Asteroid2" parent="asteroid_container" instance=ExtResource("2_pyl5d")]
 position = Vector2(900, 600)
+
+[node name="Asteroid3" parent="asteroid_container" instance=ExtResource("2_pyl5d")]
+position = Vector2(500, 600)
+
+[node name="Asteroid4" parent="asteroid_container" instance=ExtResource("2_pyl5d")]
+position = Vector2(800, 900)
+
+[node name="Asteroid5" parent="asteroid_container" instance=ExtResource("2_pyl5d")]
+position = Vector2(800, 300)
 
 [node name="Effects" type="Node2D" parent="."]
 
@@ -29,7 +45,13 @@ position = Vector2(500, 300)
 [node name="Enemy_Container" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemy_Container" instance=ExtResource("3_37ipq")]
-position = Vector2(750, 100)
+position = Vector2(300, 100)
+
+[node name="Enemy2" parent="Enemy_Container" instance=ExtResource("3_37ipq")]
+position = Vector2(400, 400)
+
+[node name="Enemy3" parent="Enemy_Container" instance=ExtResource("3_37ipq")]
+position = Vector2(750, 500)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -72,6 +94,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -145,6 +171,11 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_vub5q")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+stream = ExtResource("9_mdlc2")
+autoplay = true
 
 [connection signal="timeout" from="UI/HUD/Timer" to="UI/HUD" method="_on_timer_timeout"]
 [connection signal="pressed" from="UI/Menu/Restart" to="UI/Menu" method="_on_restart_pressed"]
